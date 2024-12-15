@@ -1,0 +1,214 @@
+/* General Styles */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+h1,
+h2,
+p {
+  margin: 0;
+}
+
+/* Navbar */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #333;
+  color: #fff;
+  padding: 10px 20px;
+}
+
+.notification-icon {
+  position: relative;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+.unread-badge {
+  position: absolute;
+  top: -5px;
+  right: -10px;
+  background: red;
+  color: white;
+  font-size: 11px;
+  padding: 2px 5px;
+  border-radius: 50%;
+  font-weight: bold;
+}
+
+.notification-panel {
+  display: none;
+  position: absolute;
+  top: 30px;
+  right: 0;
+  background: #fff;
+  color: #000;
+  border: 1px solid #ddd;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  width: 300px;
+  height: 400px;
+  overflow-y: auto;
+  z-index: 1000;
+}
+
+.notification-panel.active {
+  display: block;
+}
+
+.panel-nav {
+  display: flex;
+  background: #f0f0f0;
+  border-bottom: 1px solid #ddd;
+}
+
+.nav-btn {
+  flex: 1;
+  padding: 10px;
+  text-align: center;
+  border: none;
+  background: #ddd;
+  cursor: pointer;
+}
+
+.nav-btn.active {
+  background: #333;
+  color: white;
+}
+
+.panel-content {
+  padding: 10px;
+  height: calc(100% - 50px);
+  overflow-y: auto;
+}
+
+.panel-content.hidden {
+  display: none;
+}
+
+/* *************** */
+
+.no_notifications_img {
+  width: 95%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  overflow-x: hidden;
+}
+
+.notification {
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+}
+
+.notification:hover {
+  transition: 0.1s;
+  background: #ececec;
+}
+
+.notification img {
+  max-width: 55px;
+  height: 40px;
+  margin-right: 10px;
+}
+
+.notification .content {
+  flex: 1;
+}
+
+.notification .content h6 {
+  font-size: 18px;
+  margin: 0;
+}
+
+.notification .content p {
+  font-size: 15px;
+}
+
+.notification .menu {
+  position: relative;
+}
+
+.notification .menu button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 24px;
+  height: 35px;
+  width: 35px;
+  border-radius: 50%;
+  transition: 0.3s;
+}
+
+.notification .menu button:hover {
+  background-color: #cccccc;
+}
+
+.notification .menu-options {
+  display: none;
+  position: absolute;
+  width: 200px;
+  top: 20px;
+  right: 0;
+  background: #fff;
+  border: 1px solid #ddd;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  z-index: 1100;
+}
+
+.notification .menu-options button {
+  width: 190px;
+  font-size: 16px;
+  padding: 5px 10px;
+  text-align: left;
+  background: none;
+  border: none;
+  border-radius: 0;
+  cursor: pointer;
+  transition: 0.5s;
+}
+
+.notification .menu-options button:hover {
+  background: #cccccc;
+}
+
+/* !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! */
+/* ************************************************************ */
+/* ???????????????????????????????????????????????????????????? */
+
+/* Banner */
+.banner {
+  background: url("image.png") no-repeat center center/cover;
+  text-align: center;
+  color: #fff;
+  padding: 100px 20px;
+}
+
+/* Sections */
+section {
+  padding: 40px 20px;
+}
+
+section#services,
+section#portfolio,
+section#blog,
+section#testimonials,
+section#faqs {
+  background: #f9f9f9;
+  margin-bottom: 20px;
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: 10px;
+  background: #333;
+  color: #fff;
+}

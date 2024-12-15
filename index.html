@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Advanced Notifications</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css"
+      integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- *********************** Main Section (Navbar) **************************-->
+
+    <nav class="navbar">
+      <h1>Custom Notifications Panel</h1>
+      <div class="notification-icon">
+        <i class="fas fa-bell"></i>
+        <span id="unreadCount" class="unread-badge">0</span>
+
+        <div class="notification-panel" id="notificationPanel"></div>
+      </div>
+    </nav>
+
+    <!-- *********************** Other Sections **************************-->
+
+    <header class="banner">
+      <div class="overlay"></div>
+      <h1>Custom Functional Notifications Panel</h1>
+      <p>
+        This website is intended for experimental purposes in the creation of a
+        Notification pane. <br />
+        Click the button below to reset the notification panel.
+      </p>
+      <button id="clearStorageBtn">Clear Local Storage</button>
+      <div id="confirmationPopup">Local storage has been cleared.</div>
+    </header>
+
+    <div class="websites">
+      <h2>
+        <a href="https://muhtasim-rahman.github.io/portfolio-2023"
+          >Muhtasim Rahman | Portfolio (2023)</a
+        >
+      </h2>
+      <iframe
+        src="https://muhtasim-rahman.github.io/portfolio-2023"
+        frameborder="0"
+      ></iframe>
+      <h2>
+        <a href="https://muhtasim-rahman.github.io/halal"
+          >Halal | Islamic website Project(Under Development)</a
+        >
+      </h2>
+      <iframe
+        src="https://muhtasim-rahman.github.io/halal"
+        frameborder="0"
+      ></iframe>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+      <p>&copy; 2024 Muhtasim. All rights reserved.</p>
+    </footer>
+
+    <script src="script.js" defer></script>
+  </body>
+</html>

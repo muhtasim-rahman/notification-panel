@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Advanced Notifications</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css"
+      integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <nav class="navbar">
+      <h1>Improved Notifications</h1>
+      <div class="notification-icon">
+        <i class="fas fa-bell"></i>
+        <span id="unreadCount" class="unread-badge">0</span>
+        <div class="notification-panel" id="notificationPanel"></div>
+      </div>
+    </nav>
+
+    <!-- *********************** Other Sections **************************-->
+
+    <header class="banner">
+      <h1>Welcome to My Portfolio</h1>
+      <p>Your ideas turned into reality!</p>
+      <button id="resetStorage">Reset Local Storage</button>
+    </header>
+
+    <!-- Services Section -->
+    <section id="services">
+      <h2>My Services</h2>
+      <div class="services">
+        <div class="service">
+          <h3>Web Development</h3>
+          <p>
+            I build user-friendly and dynamic websites tailored to your needs.
+          </p>
+        </div>
+        <div class="service">
+          <h3>Design</h3>
+          <p>Creating visually stunning and responsive designs.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio">
+      <h2>Portfolio</h2>
+      <div class="portfolio-grid">
+        <img src="image.png" alt="Project 1" width="48%" />
+        <img src="image.png" alt="Project 2" width="48%" />
+      </div>
+    </section>
+
+    <!-- Blog Section -->
+    <section id="blog">
+      <h2>Blog</h2>
+      <p>Check out my latest articles and tutorials!</p>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials">
+      <h2>Testimonials</h2>
+      <blockquote>
+        "Muhtasim is a fantastic developer! Highly recommend."
+      </blockquote>
+      <cite>- A Happy Client</cite>
+    </section>
+
+    <!-- FAQs Section -->
+    <section id="faqs">
+      <h2>FAQs</h2>
+      <div class="faq">
+        <h3>What services do you offer?</h3>
+        <p>Web development, design, and consulting services.</p>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <p>&copy; 2024 Muhtasim. All rights reserved.</p>
+    </footer>
+
+    <script src="script.js" defer></script>
+  </body>
+</html>
