@@ -1,5 +1,5 @@
 const apiURL =
-  "https://script.google.com/macros/s/AKfycbxYufeWyGtembDWJ0iRtC0L2uwdAX3A8IQ8WjDe_H3wGSO5_CNwyBW7euGSAze5JZNM/exec";
+  "https://script.google.com/macros/s/AKfycbx4d3Sa8mCw7Fr6Aq4ZHCRwqb6_36SVOYcPh3MStMP6QZaOKcmDGtq8NqXU9wjeQXKZ/exec";
 
 // Fetch Notifications with Error Handling
 async function fetchNotifications() {
