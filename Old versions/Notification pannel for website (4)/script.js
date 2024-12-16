@@ -1,6 +1,5 @@
-// API URL
 const apiURL =
-  "https://script.google.com/macros/s/AKfycbzxM4GymESleS6OFR78q8jWGmIgWqGorHWSBNpNRrrNhXuEHuaAhrDGK4-cetR1SgQ9/exec";
+  "https://script.google.com/macros/s/AKfycbysQ4SulPVXa8hPeaEfSAlBBwQ_cU4XqAJQXjpfdA9QjHQcv088-ywC3aWRNHMItZko/exec";
 
 let currentPage = 1;
 const itemsPerPage = 5;
@@ -84,27 +83,13 @@ function displayNotifications(page) {
   );
 
   if (activeNotifications.length === 0) {
-    // Select the .notification-header div and hide it
-    const notificationHeader = document.querySelector(".notification-header");
-    if (notificationHeader) {
-      notificationHeader.style.display = "none"; // Hide the notification header
-    }
-
     panel.innerHTML +=
       '<img class="no_notifications_img" src="https://i.ibb.co.com/YpvK8h7/no-notifications-img.jpg" alt="No notifications available right now!" />';
     return;
-  } else {
-    // Make sure the notification header is displayed when notifications exist
-    const notificationHeader = document.querySelector(".notification-header");
-    if (notificationHeader) {
-      notificationHeader.style.display = ""; // Reset to default display style
-    }
   }
 
   activeNotifications.slice(startIndex, endIndex).forEach((notification) => {
-    const isReadAdmin = notification.read_unread === "Read";
-    const isReadLocal = localStorage.getItem(`read-${notification.id}`);
-    const isRead = isReadAdmin || isReadLocal;
+    const isRead = localStorage.getItem(`read-${notification.id}`);
 
     const notificationDiv = document.createElement("div");
     notificationDiv.classList.add("notification");
@@ -168,11 +153,9 @@ async function fetchNotifications() {
     const response = await fetch(apiURL);
     if (!response.ok) throw new Error("Failed to fetch notifications");
     const data = await response.json();
-
-    activeNotifications = data
-      .filter((notification) => notification.status === "Active")
-      .sort((a, b) => b.id - a.id); // Sort by ID in descending order
-
+    activeNotifications = data.filter(
+      (notification) => notification.status === "Active"
+    );
     updateUnreadCount();
     displayNotifications(currentPage);
   } catch (error) {
@@ -193,6 +176,7 @@ function updateUnreadCount() {
     unreadBadge.classList.remove("active");
   }
 
+  // Disable Mark All as Read Button if no unread notifications
   if (markAllButton) {
     if (unreadCount === 0) {
       markAllButton.disabled = true;
@@ -214,9 +198,7 @@ function updateHeaderUnreadCount() {
 
 function getUnreadCount() {
   return activeNotifications.filter(
-    (notification) =>
-      !localStorage.getItem(`read-${notification.id}`) &&
-      notification.read_unread !== "Read"
+    (notification) => !localStorage.getItem(`read-${notification.id}`)
   ).length;
 }
 
@@ -239,10 +221,10 @@ function renderNotificationHeader() {
   if (markAllButton) {
     if (unreadCount === 0) {
       markAllButton.disabled = true;
-      markAllButton.classList.add("disabled");
+      markAllButton.classList.add("disabled"); // Add the .disabled class
     } else {
       markAllButton.disabled = false;
-      markAllButton.classList.remove("disabled");
+      markAllButton.classList.remove("disabled"); // Remove the .disabled class
     }
   }
 
@@ -288,9 +270,11 @@ function renderPagination() {
 function closeAllMenus() {
   const allMenus = document.querySelectorAll(".menu-options");
   allMenus.forEach((menu) => {
+    // Close the menu
     menu.style.display = "none";
     menu.classList.remove("menu-open");
 
+    // Add an event listener to close the menu on click
     menu.addEventListener("click", () => {
       menu.style.display = "none";
       menu.classList.remove("menu-open");
@@ -320,11 +304,18 @@ window.addEventListener("DOMContentLoaded", fetchNotifications);
 document
   .getElementById("clearStorageBtn")
   .addEventListener("click", function () {
+    // Clear the local storage
     localStorage.clear();
+
+    // Display the confirmation popup
     showPopup();
+
+    // Hide the popup after 2 seconds
     setTimeout(hidePopup, 2000);
+
+    // Refresh the page after 1 second
     setTimeout(() => {
-      window.location.reload();
+      window.location.reload(); // Reload the page
     }, 1000);
   });
 
@@ -339,7 +330,7 @@ function hidePopup() {
   popup.style.opacity = "0";
   setTimeout(() => {
     popup.style.display = "none";
-  }, 500);
+  }, 500); // Delay the hide action to ensure smooth fade out
 }
 
 //* Load Notifications on Page Load

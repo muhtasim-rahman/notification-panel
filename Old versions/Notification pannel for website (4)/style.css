@@ -1,7 +1,6 @@
 /* ! General Styles */
-@import url("https://fonts.googleapis.com/css?family=Montserrat:400,700|Raleway:300,400");
 body {
-  font-family: "Raleway";
+  font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -60,8 +59,8 @@ p {
   color: #000;
   border: 1px solid #ddd;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-  width: 370px;
-  height: 460px;
+  width: 350px;
+  height: 430px;
   overflow-y: auto;
   z-index: 1000;
   border-radius: 8px;
@@ -81,33 +80,6 @@ p {
   left: 50%;
   transform: translate(-50%, -50%);
   overflow-x: hidden;
-}
-
-/* *---------------------------------- ( Loading Animation for Notification Panel ) ----------------------------------* */
-
-.loader {
-  width: fit-content;
-  font-size: 50px;
-  font-family: system-ui, sans-serif;
-  font-weight: bold;
-  text-transform: uppercase;
-  color: #0000;
-  -webkit-text-stroke: 1px #c2c2c2;
-  background: linear-gradient(-60deg, #0000 45%, #c2c2c2 0 55%, #0000 0) 0/300%
-    100% no-repeat text;
-  animation: l3 2s linear infinite;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-.loader:before {
-  content: "Loading";
-}
-@keyframes l3 {
-  0% {
-    background-position: 100%;
-  }
 }
 
 /* *---------------------------------- ( Notification Header ) ----------------------------------* */
@@ -306,8 +278,7 @@ p {
 
 /* Banner */
 .banner {
-  background: url("https://i.ibb.co.com/9qbD7cL/image.png") no-repeat center
-    center/cover;
+  background: url("image.png") no-repeat center center/cover;
   text-align: center;
   color: #fff;
   padding: 100px 20px;
