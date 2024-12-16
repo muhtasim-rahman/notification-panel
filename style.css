@@ -1,4 +1,4 @@
-/* ! General Styles */
+/* ! ---------------------------------------- ( General Styles ) -------------------------------------------- */
 @import url("https://fonts.googleapis.com/css?family=Montserrat:400,700|Raleway:300,400");
 body {
   font-family: "Raleway";
@@ -51,6 +51,7 @@ p {
 }
 
 /* *---------------------------------- ( Notification Panel ) ----------------------------------* */
+
 .notification-panel {
   display: none;
   position: absolute;
@@ -92,14 +93,15 @@ p {
   font-weight: bold;
   text-transform: uppercase;
   color: #0000;
-  -webkit-text-stroke: 1px #c2c2c2;
-  background: linear-gradient(-60deg, #0000 45%, #c2c2c2 0 55%, #0000 0) 0/300%
+  -webkit-text-stroke: 1px #a7a7a7;
+  background: linear-gradient(-60deg, #0000 45%, #a7a7a7 0 55%, #0000 0) 0/300%
     100% no-repeat text;
   animation: l3 2s linear infinite;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  margin-top: -20px;
 }
 .loader:before {
   content: "Loading";
@@ -107,6 +109,63 @@ p {
 @keyframes l3 {
   0% {
     background-position: 100%;
+  }
+}
+
+.loader-watermark {
+  font-weight: bold;
+  font-family: monospace;
+  display: inline-grid;
+  font-size: 18px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  margin-top: 20px;
+  color: #c2c2c2;
+}
+.loader-watermark:before,
+.loader-watermark:after {
+  content: "mdturzo.odoo.com";
+  grid-area: 1/1;
+  mask-size: 100% 5px, 100% 100%;
+  mask-repeat: no-repeat;
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  animation: l35-1 2s infinite;
+}
+.loader-watermark:before {
+  mask-image: linear-gradient(#c2c2c2 0 0), linear-gradient(#c2c2c2 0 0);
+}
+.loader-watermark:after {
+  mask-image: linear-gradient(#c2c2c2 0 0);
+  animation: l35-1 2s infinite,
+    l35-2 0.3s infinite cubic-bezier(0.5, 200, 0.5, -200);
+}
+
+@keyframes l35-1 {
+  0% {
+    -webkit-mask-position: 0 20px, 0 0;
+  }
+  20% {
+    -webkit-mask-position: 0 8px, 0 0;
+  }
+  40% {
+    -webkit-mask-position: 0 100%, 0 0;
+  }
+  60% {
+    -webkit-mask-position: 0 3px, 0 0;
+  }
+  80% {
+    -webkit-mask-position: 0 15px, 0 0;
+  }
+  100% {
+    -webkit-mask-position: 0 0, 0 0;
+  }
+}
+@keyframes l35-2 {
+  100% {
+    transform: translate(0.1px);
   }
 }
 
