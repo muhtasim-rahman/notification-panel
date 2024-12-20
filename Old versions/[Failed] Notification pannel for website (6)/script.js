@@ -6,7 +6,7 @@ let currentPage = 1; // Tracks the current page in pagination
 const itemsPerPage = 6; // Number of notifications to display per page
 let activeNotifications = []; // Stores the list of active notifications
 
-// -----------------------------------------------------------------------------
+// TODO: ------------------------------------
 // Mark Notification as Read (without redirect)
 function markAsRead(id) {
   // Update read status in local storage
@@ -40,7 +40,7 @@ function markAsRead(id) {
   updateHeaderUnreadCount();
 }
 
-// -----------------------------------------------------------------------------
+// TODO: ------------------------------------
 // Toggle Read/Unread Status
 function toggleReadStatus(id, button) {
   // Find the notification in the active list
@@ -72,7 +72,7 @@ function toggleReadStatus(id, button) {
   updateHeaderUnreadCount();
 }
 
-// -----------------------------------------------------------------------------
+// TODO: ------------------------------------
 // Attach Listeners for Menu Toggle (Three-dot menu)
 function attachMenuToggleListeners() {
   const menuToggles = document.querySelectorAll(".menu-toggle");
@@ -109,7 +109,7 @@ function attachMenuToggleListeners() {
   });
 }
 
-// -----------------------------------------------------------------------------
+// TODO: ------------------------------------
 // Display Notifications with Pagination
 function displayNotifications(page) {
   const panel = document.getElementById("notificationPanel");
@@ -202,7 +202,7 @@ function displayNotifications(page) {
   attachMenuToggleListeners(); // Enable menu toggling
 }
 
-// -----------------------------------------------------------------------------
+// TODO: ------------------------------------
 // Delete Notification
 function deleteNotification(id) {
   // Find the notification in the active list
@@ -231,13 +231,13 @@ function deleteNotification(id) {
   updateHeaderUnreadCount();
 }
 
-// -----------------------------------------------------------------------------
+// TODO: ------------------------------------
 // Report Notification
 function reportNotification() {
   window.open("https://mdturzo.odoo.com/contact", "_blank");
 }
 
-// -----------------------------------------------------------------------------
+// TODO: ------------------------------------
 // Fetch Notifications from API
 async function fetchNotifications() {
   try {
@@ -258,7 +258,7 @@ async function fetchNotifications() {
   }
 }
 
-// -----------------------------------------------------------------------------
+// TODO: ------------------------------------
 // Additional Helper Functions for UI
 
 // Update the unread count badge and button states
@@ -392,7 +392,7 @@ function closeAllMenus() {
   });
 }
 
-// -----------------------------------------------------------------------------
+// TODO: ------------------------------------
 // Initialization and Event Listeners
 // Toggle notification panel visibility
 document.querySelector(".notification-icon").addEventListener("click", (e) => {
@@ -415,7 +415,7 @@ document.getElementById("notificationPanel").addEventListener("click", (e) => {
 // Fetch notifications when the DOM is loaded
 window.addEventListener("DOMContentLoaded", fetchNotifications);
 
-// -----------------------------------------------------------------------------
+// TODO: ------------------------------------
 // Clear Local Storage
 document.getElementById("clearStorageBtn").addEventListener("click", () => {
   localStorage.clear();

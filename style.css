@@ -1,7 +1,7 @@
 /* ! ---------------------------------------- ( General Styles ) -------------------------------------------- */
 @import url("https://fonts.googleapis.com/css?family=Montserrat:400,700|Raleway:300,400");
 body {
-  font-family: "Raleway";
+  font-family: "Raleway", sans-serif;
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -13,7 +13,7 @@ p {
   margin: 0;
 }
 
-/* Navbar */
+/* *---------------------------------- ( Navbar ) ----------------------------------* */
 .navbar {
   display: flex;
   justify-content: space-between;
@@ -51,7 +51,6 @@ p {
 }
 
 /* *---------------------------------- ( Notification Panel ) ----------------------------------* */
-
 .notification-panel {
   display: none;
   position: absolute;
@@ -85,7 +84,6 @@ p {
 }
 
 /* *---------------------------------- ( Loading Animation for Notification Panel ) ----------------------------------* */
-
 .loader {
   width: fit-content;
   font-size: 50px;
@@ -103,9 +101,11 @@ p {
   transform: translate(-50%, -50%);
   margin-top: -20px;
 }
+
 .loader:before {
   content: "Loading";
 }
+
 @keyframes l3 {
   0% {
     background-position: 100%;
@@ -124,6 +124,7 @@ p {
   margin-top: 20px;
   color: #c2c2c2;
 }
+
 .loader-watermark:before,
 .loader-watermark:after {
   content: "mdturzo.odoo.com";
@@ -134,9 +135,11 @@ p {
   mask-composite: exclude;
   animation: l35-1 2s infinite;
 }
+
 .loader-watermark:before {
   mask-image: linear-gradient(#c2c2c2 0 0), linear-gradient(#c2c2c2 0 0);
 }
+
 .loader-watermark:after {
   mask-image: linear-gradient(#c2c2c2 0 0);
   animation: l35-1 2s infinite,
@@ -163,6 +166,7 @@ p {
     -webkit-mask-position: 0 0, 0 0;
   }
 }
+
 @keyframes l35-2 {
   100% {
     transform: translate(0.1px);
@@ -234,6 +238,10 @@ p {
   height: 40px;
   margin-right: 15px;
   border-radius: 4px;
+}
+
+.notification .content {
+  flex: 1;
 }
 
 .notification .content h6 {
@@ -342,27 +350,27 @@ p {
   font-weight: bold;
 }
 
+/* *---------------------------------- ( Confirmation Popup ) ----------------------------------* */
 #confirmationPopup {
   display: none;
   position: fixed;
-  bottom: 20px; /* 20px from the bottom */
-  left: 50%; /* Horizontally center */
-  transform: translateX(-50%); /* Offset to truly center the element */
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
   background-color: #333;
   color: white;
-  padding: 15px 30px; /* Adjusted padding for better design */
-  border-radius: 8px; /* Slightly rounder corners */
-  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2); /* Slightly larger shadow for depth */
+  padding: 15px 30px;
+  border-radius: 8px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
   opacity: 0;
   transition: opacity 0.5s ease-in-out;
-  font-family: "Arial", sans-serif; /* More neutral font */
-  font-size: 16px; /* Adjusted font size for better readability */
-  max-width: 90%; /* Prevents popup from being too wide on smaller screens */
-  text-align: center; /* Centers text inside the popup */
+  font-family: "Arial", sans-serif;
+  font-size: 16px;
+  max-width: 90%;
+  text-align: center;
 }
 
-/* !---------------------------------- (Temporary object design) ----------------------------------* */
-
+/* *---------------------------------- ( Temporary Object Design ) ----------------------------------* */
 /* Banner */
 .banner {
   background: url("https://i.ibb.co.com/9qbD7cL/image.png") no-repeat center
@@ -448,7 +456,7 @@ p {
   padding-bottom: 25px;
 }
 
-/* Footer */
+/* *---------------------------------- ( Footer ) ----------------------------------* */
 footer {
   text-align: center;
   padding: 10px;
