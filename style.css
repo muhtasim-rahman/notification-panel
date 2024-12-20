@@ -273,6 +273,18 @@ p {
   background-color: rgba(107, 143, 184, 0.2);
 }
 
+.important-icon {
+  font-size: 12px;
+  position: absolute;
+  top: 35px;
+  left: 35px;
+  color: #fff;
+  background-color: #4958a3;
+  border-radius: 50%;
+  height: 12.5px;
+  width: 12.5px;
+  padding: 5px;
+}
 /* *---------------------------------- ( Menu Options ) ----------------------------------* */
 .menu-options {
   display: none;
