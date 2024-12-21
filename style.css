@@ -233,6 +233,10 @@ p {
   transition: background 0.1s;
 }
 
+.notification-image-container {
+  width: 55px;
+}
+
 .notification img {
   max-width: 55px;
   height: 40px;
@@ -285,6 +289,7 @@ p {
   width: 12.5px;
   padding: 5px;
 }
+
 /* *---------------------------------- ( Menu Options ) ----------------------------------* */
 .menu-options {
   display: none;
@@ -326,22 +331,24 @@ p {
 /* *---------------------------------- ( Pagination ) ----------------------------------* */
 .pagination {
   display: flex;
-  justify-content: center;
   align-items: center;
   gap: 5px;
   padding: 10px 0;
   position: absolute;
-  bottom: 5px;
+  bottom: 0;
   left: 50%;
+  margin-bottom: 5px;
   transform: translateX(-50%);
   background: #ffffff50;
-  width: 100%;
+  width: 90%;
   padding-bottom: 5px;
   z-index: 2000;
+  overflow-x: auto;
 }
 
 .page-btn {
   padding: 5px 10px;
+  margin-bottom: 5px;
   border: none;
   border-radius: 4px;
   background: #ddd;
