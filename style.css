@@ -1,7 +1,9 @@
 /* ! ---------------------------------------- ( General Styles ) -------------------------------------------- */
-@import url("https://fonts.googleapis.com/css?family=Montserrat:400,700|Raleway:300,400");
+@import url("https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap");
 body {
-  font-family: "Raleway", sans-serif;
+  font-family: "Nunito", serif;
+  font-optical-sizing: auto;
+  font-style: normal;
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -61,7 +63,7 @@ p {
   border: 1px solid #ddd;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
   width: 400px;
-  height: 500px;
+  height: 490px;
   overflow-y: auto;
   z-index: 1000;
   border-radius: 8px;
@@ -75,7 +77,7 @@ p {
 }
 
 .no_notifications_img {
-  width: 85%;
+  width: 95%;
   position: absolute;
   top: 55%;
   left: 50%;
@@ -332,23 +334,23 @@ p {
 .pagination {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 5px;
-  padding: 10px 0;
+  padding: 5px;
   position: absolute;
   bottom: 0;
   left: 50%;
   margin-bottom: 5px;
   transform: translateX(-50%);
-  background: #ffffff50;
+  background: #ffffff75;
   width: 90%;
-  padding-bottom: 5px;
   z-index: 2000;
   overflow-x: auto;
 }
 
 .page-btn {
   padding: 5px 10px;
-  margin-bottom: 5px;
+  margin-bottom: 5px 0;
   border: none;
   border-radius: 4px;
   background: #ddd;
@@ -373,7 +375,7 @@ p {
 .tabs {
   display: flex;
   justify-content: space-around;
-  background: #f4f4f4;
+  background: #fff;
   padding: 5px 0;
   position: relative;
   font-size: 14px;
@@ -396,34 +398,8 @@ p {
   bottom: 0;
   height: 3px;
   background: #4958a3;
-  transition: left 0.3s ease-in-out, width 0.3s ease-in-out;
 }
-
-.content-container {
-  transition: opacity 0.5s ease-in-out;
-}
-
-/* *---------------------------------- ( Confirmation Popup ) ----------------------------------* */
-#confirmationPopup {
-  display: none;
-  position: fixed;
-  bottom: 20px;
-  left: 50%;
-  transform: translateX(-50%);
-  background-color: #333;
-  color: white;
-  padding: 15px 30px;
-  border-radius: 8px;
-  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
-  opacity: 0;
-  transition: opacity 0.5s ease-in-out;
-  font-family: "Arial", sans-serif;
-  font-size: 16px;
-  max-width: 90%;
-  text-align: center;
-}
-
-/* *---------------------------------- ( Temporary Object Design ) ----------------------------------* */
+/* !---------------------------------- ( Temporary Object Design ) ----------------------------------! */
 /* Banner */
 .banner {
   background: url("https://i.ibb.co.com/9qbD7cL/image.png") no-repeat center
@@ -480,6 +456,25 @@ p {
 #clearStorageBtn:active {
   box-shadow: #d6d6e7 0 3px 7px inset;
   transform: translateY(2px);
+}
+
+#confirmationPopup {
+  display: none;
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #333;
+  color: white;
+  padding: 15px 30px;
+  border-radius: 8px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+  font-family: "Arial", sans-serif;
+  font-size: 16px;
+  max-width: 90%;
+  text-align: center;
 }
 
 .websites {
