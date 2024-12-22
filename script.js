@@ -59,7 +59,7 @@ function displayNotifications(page, tab) {
         const notificationDiv = document.createElement("div");
         notificationDiv.classList.add("notification");
         notificationDiv.setAttribute("data-id", notification.id);
-        notificationDiv.style.fontWeight = isRead ? "normal" : "bold";
+        notificationDiv.style.fontWeight = isRead ? "normal" : "bolder";
         notificationDiv.style.borderLeftColor = isRead
           ? "transparent"
           : "#4958a3";
@@ -93,18 +93,27 @@ function displayNotifications(page, tab) {
                     <div class="menu-options">
                         <button onclick="toggleReadStatus('${
                           notification.id
-                        }', this)">${
+                        }', this)">
+                            <i class="${
+                              isRead
+                                ? "fas fa-envelope"
+                                : "fa-solid fa-circle-check"
+                            }"></i> ${
           isRead ? "Mark as Unread" : "Mark as Read"
         }</button>
                         <button onclick="toggleImportantStatus('${
                           notification.id
-                        }', this)">${
+                        }', this)">
+                            <i class=" ${
+                              isImportant
+                                ? "fa-solid fa-star-half-stroke"
+                                : "fa-solid fa-star"
+                            }"></i> ${
           isImportant ? "Mark as Unimportant" : "Mark as Important"
         }</button>
-                        <button onclick="deleteNotification('${
-                          notification.id
-                        }')">Delete</button>
-                        <button onclick="reportNotification()">Report</button>
+                        <button onclick="reportNotification()">
+                            <i class="fas fa-exclamation-circle"></i> Report
+                        </button>
                     </div>
                 </div>
             `;
@@ -220,37 +229,117 @@ function updateUnreadCount() {
   unreadBadge.classList.toggle("active", unreadCount > 0);
 }
 
-//TODO: ----------------------------------- ( Render Components ) -------|
+function closeAllMenus() {
+  const allMenus = document.querySelectorAll(".menu-options");
+  allMenus.forEach((menu) => {
+    menu.style.display = "none";
+    menu.classList.remove("menu-open");
+  });
+}
+
+//TODO: ----------------------------------- ( Notification Header ) -------|
 function renderNotificationHeader() {
   const header = document.createElement("div");
   header.classList.add("notification-header");
 
-  const unreadText = document.createElement("p");
+  // Unread Count Section
   const unreadCount = notifications.filter(
     (notification) => localStorage.getItem(`read-${notification.id}`) !== "true"
   ).length;
-  unreadText.textContent = `Unread Notifications: ${unreadCount}`;
+  const importantCount = notifications.filter(
+    (notification) =>
+      localStorage.getItem(`important-${notification.id}`) === "yes"
+  ).length;
 
-  const markAllButton = document.createElement("button");
-  markAllButton.id = "markAllReadButton";
-  markAllButton.textContent = "Mark All as Read";
-  markAllButton.disabled = unreadCount === 0;
-  markAllButton.classList.toggle("disabled", unreadCount === 0);
+  // Unread Count Text with Icon
+  const unreadText = document.createElement("p");
+  unreadText.classList.add("header-info");
+  unreadText.innerHTML = `
+    <i class="fas fa-envelope"></i>
+    <span>Unread: ${unreadCount}</span>
+  `;
 
-  markAllButton.addEventListener("click", () => {
-    notifications.forEach((notification) =>
-      localStorage.setItem(`read-${notification.id}`, "true")
-    );
-    displayNotifications(currentPage, activeTab);
-    updateUnreadCount();
+  // Important Count Text with Icon
+  const importantText = document.createElement("p");
+  importantText.classList.add("header-info");
+  importantText.innerHTML = `
+    <i class="fas fa-star"></i>
+    <span>Important: ${importantCount}</span>
+  `;
+
+  // * Settings Menu
+  const settingsContainer = document.createElement("div");
+  settingsContainer.classList.add("settings-container");
+
+  const settingsIcon = document.createElement("button");
+  settingsIcon.classList.add("menu-toggle", "settings-icon");
+  settingsIcon.innerHTML = '<i class="fas fa-cog"></i>';
+
+  const settingsMenu = document.createElement("div");
+  settingsMenu.classList.add("menu-options");
+
+  settingsMenu.innerHTML = `
+    <button onclick="markAllAsRead()">
+      <i class="fas fa-check-double"></i> Mark All as Read
+    </button>
+    <button onclick="markAllAsUnimportant()">
+      <i class="fa-regular fa-star"></i> Mark All as Unimportant
+    </button>
+    <button onclick="reportNotification()">
+      <i class="fas fa-exclamation-circle"></i> Report
+    </button>
+  `;
+
+  // * Attach menu functionality
+  settingsIcon.addEventListener("click", (e) => {
+    e.stopPropagation();
+    closeAllMenus();
+    settingsMenu.style.display =
+      settingsMenu.style.display === "block" ? "none" : "block";
+    settingsMenu.classList.toggle("menu-open");
   });
 
+  let hoverTimeout;
+  settingsMenu.addEventListener("mouseleave", () => {
+    hoverTimeout = setTimeout(() => {
+      settingsMenu.style.display = "none";
+      settingsMenu.classList.remove("menu-open");
+    }, 100);
+  });
+
+  settingsMenu.addEventListener("mouseenter", () => {
+    clearTimeout(hoverTimeout);
+  });
+
+  settingsContainer.appendChild(settingsIcon);
+  settingsContainer.appendChild(settingsMenu);
+
+  // Append elements to header
   header.appendChild(unreadText);
-  header.appendChild(markAllButton);
+  header.appendChild(importantText);
+  header.appendChild(settingsContainer);
 
   const panel = document.getElementById("notificationPanel");
   panel.appendChild(header);
 }
+
+// Additional Functions
+function markAllAsRead() {
+  notifications.forEach((notification) =>
+    localStorage.setItem(`read-${notification.id}`, "true")
+  );
+  displayNotifications(currentPage, activeTab);
+  updateUnreadCount();
+}
+
+function markAllAsUnimportant() {
+  notifications.forEach((notification) =>
+    localStorage.setItem(`important-${notification.id}`, "no")
+  );
+  displayNotifications(currentPage, activeTab);
+}
+
+//TODO: ----------------------------------- ( Render Tabs ) -------|
 
 function renderTabs() {
   const tabsContainer = document.createElement("div");
@@ -293,6 +382,19 @@ function updateTabIndicator() {
   indicator.style.width = `${activeTabElement.offsetWidth}px`;
 }
 
+function getEmptyImageSrc(tab) {
+  switch (tab) {
+    case "Unread":
+      return "https://i.ibb.co.com/gDjjL7j/No-unread-notifications.jpg";
+    case "Important":
+      return "https://i.ibb.co.com/0sFg5cg/No-notifications-flagged-as-important.jpg";
+    default:
+      return "https://i.ibb.co.com/L0F2rMj/No-notifications.jpg";
+  }
+}
+
+//TODO: ----------------------------------- ( Render Pagination ) -------|
+
 function renderPagination(totalItems) {
   const pagination = document.createElement("div");
   pagination.classList.add("pagination");
@@ -316,25 +418,6 @@ function renderPagination(totalItems) {
   panel.appendChild(pagination);
 }
 
-function closeAllMenus() {
-  const allMenus = document.querySelectorAll(".menu-options");
-  allMenus.forEach((menu) => {
-    menu.style.display = "none";
-    menu.classList.remove("menu-open");
-  });
-}
-
-function getEmptyImageSrc(tab) {
-  switch (tab) {
-    case "Unread":
-      return "https://i.ibb.co.com/gDjjL7j/No-unread-notifications.jpg";
-    case "Important":
-      return "https://i.ibb.co.com/0sFg5cg/No-notifications-flagged-as-important.jpg";
-    default:
-      return "https://i.ibb.co.com/L0F2rMj/No-notifications.jpg";
-  }
-}
-
 //TODO: ----------------------------------- ( Event Listeners ) -------|
 document.querySelector(".notification-icon").addEventListener("click", (e) => {
   e.stopPropagation();
@@ -352,6 +435,26 @@ document.getElementById("notificationPanel").addEventListener("click", (e) => {
 });
 
 window.addEventListener("DOMContentLoaded", fetchNotifications);
+
+document.addEventListener("click", (event) => {
+  document.querySelectorAll(".menu-options").forEach((menu) => {
+    if (!menu.contains(event.target) && !event.target.closest(".menu-toggle")) {
+      menu.style.display = "none";
+      menu.classList.remove("menu-open");
+    }
+  });
+});
+
+document.querySelectorAll(".menu-toggle").forEach((button) => {
+  button.addEventListener("click", (event) => {
+    event.stopPropagation();
+    const menu = button.nextElementSibling;
+    if (menu) {
+      menu.style.display = menu.style.display === "block" ? "none" : "block";
+      menu.classList.toggle("menu-open");
+    }
+  });
+});
 
 //TODO: ----------------------------------- ( Clear Local Storage ) -------|
 
