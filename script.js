@@ -2,7 +2,7 @@
 const apiURL =
   "https://script.google.com/macros/s/AKfycbzrmZ_At4CPKVY1Fjzw3GWxONpsCGfJwasEFz3DGa924ZRuwkG9RKi0hrFkXYX9p51y/exec";
 let currentPage = 1;
-const itemsPerPage = 6;
+const itemsPerPage = 5;
 let notifications = [];
 let activeTab = "All";
 
