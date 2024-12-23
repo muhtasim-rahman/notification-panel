@@ -23,8 +23,8 @@ p {
   position: relative;
 }
 
-/* *---------------------------------- ( Notification Icon ) ----------------------------------* */
-.notification-icon {
+/* TODO: -------------------------------------- ( Notification Icon )  ---------------- |*/
+_ .notification-icon {
   position: relative;
   cursor: pointer;
   font-size: 18px;
@@ -49,8 +49,8 @@ p {
   display: inline-block;
 }
 
-/* *---------------------------------- ( Notification Panel ) ----------------------------------* */
-.notification-panel {
+/* TODO: -------------------------------------- ( Notification Panel )  ---------------- |*/
+_ .notification-panel {
   display: none;
   position: absolute;
   top: 30px;
@@ -82,8 +82,8 @@ p {
   overflow-x: hidden;
 }
 
-/* *---------------------------------- ( Notification Header ) ----------------------------------* */
-.notification-header {
+/* TODO: -------------------------------------- ( Notification Header )  ---------------- |*/
+_ .notification-header {
   position: absolute;
   top: 0;
   width: 90%;
@@ -125,8 +125,8 @@ p {
   background-color: #ccc;
 }
 
-/* *---------------------------------- ( Notification Styling ) ----------------------------------* */
-.notification {
+/* TODO: -------------------------------------- ( Notification Styling )  ---------------- |*/
+_ .notification {
   display: flex;
   position: relative;
   padding: 10px;
@@ -178,8 +178,8 @@ p {
   background-color: rgba(107, 143, 184, 0.2);
 }
 
-/* *---------------------------------- ( Menu Options ) ----------------------------------* */
-.menu-options {
+/* TODO: -------------------------------------- ( Menu Options )  ---------------- |*/
+_ .menu-options {
   display: none;
   position: absolute;
   width: 200px;
@@ -216,8 +216,8 @@ p {
   background: rgba(107, 143, 184, 0.2);
 }
 
-/* *---------------------------------- ( Pagination ) ----------------------------------* */
-.pagination {
+/* TODO: -------------------------------------- ( Pagination )  ---------------- |*/
+_ .pagination {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -274,7 +274,8 @@ p {
   text-align: center; /* Centers text inside the popup */
 }
 
-/* !---------------------------------- (Temporary object design) ----------------------------------* */
+/* !---------------------------------- (Temporary object design)  ---------------- |*/
+_
 
 /* Banner */
 .banner {
